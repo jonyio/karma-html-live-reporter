@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Karma</title>
+  <link rel="stylesheet" type="text/css" href="/css.css">
+  <style>
+  </style>
+</head>
+
+<body class="{{#focusOnFailures}}show-failures{{/focusOnFailures}}">
+
+Hello World.
+<div class="info">Tested in {{browserName}} on {{date}}</div>
+
+<header class="{{result}}">
+  <span class="fold-buttons">
+    <a href="#" onclick="fold();">Fold</a> | 
+    <a href="#" onclick="unfold();">Unfold</a>
+  </span>
+  {{#total}}
+    {{tested}} specs tested, {{failed}} failed, {{skipped}} pending
+  {{/total}}
+</header>
+{{#total}} {{#failed}}
+  <div class="tabs">
+    <a class="tab summary" onclick="showSummary();" href="#">Summary</a>|<a 
+       class="tab failures" onclick="showFailures();" href="#">Failures</a>
+  </div>
+{{/failed}} {{/total}}
+
+<div id="summary">
+  {{#suites}}
+    <section class="{{folded}}" onclick="toggleSection(this);">
+      {{#lines}}
+        <div class="{{className}}">
+          <div class="line" style="padding-left:{{indent}}px">
+            {{^failed}}{{text}}{{/failed}}
+            {{#failed}}<a href="javascript:void(0)" 
+                onclick="toggleLog(event, this)">{{text}}</a>{{/failed}}
+            <span class="section-totals">{{#totals}}<span
+                  class="section-total {{result}}">{{count}}</span>{{/totals}}
+            </span>
+          </div>
+          {{#failed}} 
+            <div class="spec-log" style="padding-left:{{logIndent}}px">{{log}}</div> 
+          {{/failed}}
+        </div>
+      {{/lines}}
+    </section>
+  {{/suites}}
+</div>
+
+<div id="failures">
+  {{#failedSpecs}}
+    <div class="failed-spec">
+      <div class="name">{{name}}</div>
+      <div class="failure-log">{{log}}</div>
+    </div>
+  {{/failedSpecs}}
+</div>
+
+<script>
+
+var folded = {{foldAll}};
+
+</script>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js.js"></script>
+
+</body>
+</html>
+

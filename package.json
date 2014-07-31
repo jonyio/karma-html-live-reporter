@@ -1,0 +1,39 @@
+{
+  "name": "karma-html-live-reporter",
+  "version": "0.1.0",
+  "description": "A Karma plugin. Reports results in live html pages.",
+  "main": "index.js",
+  "files": [
+    "template.html",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jonyio/karma-html-live-reporter"
+  },
+  "bugs": {
+    "url": "http://github.com/jonyio/karma-html-live-reporter/issues",
+    "email": "johnny3k@gmail.com"
+  },
+  "keywords": [
+    "karma-plugin",
+    "karma-reporter",
+    "html",
+    "jasmine"
+  ],
+  "author": "Jony Ivanov <johnny3k@gmail.com>",
+  "dependencies": {
+    "mu2": "~0.5.20",
+    "lodash": "~2.4.1",
+    "ws": "~0.4.31",
+    "socket.io": "~1.0.6",
+    "express": "~4.7.2"
+  },
+  "peerDependencies": {
+    "karma": ">=0.12"
+  },
+  "license": "MIT",
+  "contributors": [
+    "Jony Ivanov <johnny3k@gmail.com>"
+  ]
+}
