@@ -1,6 +1,6 @@
 {
   "name": "karma-html-live-reporter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Karma plugin. Reports results in live html pages.",
   "main": "index.js",
   "files": [
