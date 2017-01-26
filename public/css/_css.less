@@ -1,0 +1,349 @@
+// global {{{
+  html, body, div, span, h1, h2, h3, p, a, header, section, { // reset 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+  body { 
+    color: @text-color;
+    font: @font-size/1.5em @font;
+    background: @page-bg; 
+    padding: 10px;
+  }
+  a { cursor: pointer; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .clear { // floats clearer 
+    width: 100%;
+    height: 1px;
+    margin: 0 0 -1px;
+    clear: both;
+  }
+  
+  .transition-color {
+    transition: color 400ms;
+  }
+  .transition-bg {
+    transition: background-color 400ms;
+  }
+  .transition-colors {
+    transition: background-color 400ms, color 400ms;
+  }
+  .no-transitions {
+    .transition-color, .transition-bg, .transition-colors {
+      transition: none;
+    }
+  }
+// global }
+
+// browser tabs {{{
+  #browsers {
+    // height: 28px;
+    // border-bottom: #ccc 1px solid;
+    &.no-transition .browser-tab {
+      transition: none !important;
+    }
+  }
+  .browser-tab, #info-toggle {
+    cursor: pointer;
+    
+    color: @green;
+    background: @browser-tab-bg;
+    
+    font: 14px/28px @font;
+    white-space: nowrap;
+    
+    height: 28px;
+    padding: 0 10px;
+    margin: 0 5px 5px 0;
+    float: left;
+    
+    &:hover {
+      color: @alt-text-color !important;
+      background: @green-bg;
+    }
+    &.failed {
+      color: @red;
+      &:hover { background: @red-bg; }
+    }
+    &.selected {
+      cursor: default;
+      color: @alt-text-color !important;
+      background: @green-bg;
+      &.failed {
+        background: @red-bg;
+      }
+    }
+  }
+  .browser-name {
+    margin-right: 10px;
+  }
+  .browser-status {
+    float: right;
+    text-align: right;
+    min-width: 60px;
+  }
+  
+  #info-toggle {
+    color: @text-color;
+    font-size: 18px;
+    // font-weight: bold;
+    text-align: center;
+    width: 28px;
+    padding: 0;
+    margin: 0 0 0 5px;
+    float: right;
+    &:after {
+      content: '?';
+    }
+    &.no-connection {
+      font-weight: bold;
+      color: @alt-text-color;
+      background: @red-bg;
+      &:after {
+        content: '\2022';
+      }
+    }
+    &:hover {
+      color: @alt-text-color;
+      background: @blue;
+    }
+  }
+// browser tabs }}}
+
+// info popup {{{
+  #info {
+    position: absolute;
+    top: 10px;
+    right: 38px;
+    left: 10px;
+    height: 0;
+    display: none;
+  }
+  #info-content {
+    color: @info-text-color;
+    background: @info-bg;
+    
+    max-width: 430px;
+    padding: 20px 0 15px 20px;
+    border: @yellow-bg 3px solid;
+    margin: 0 0 0 auto;
+    
+    position: relative; 
+    
+    .filler {
+      background: @info-bg;
+      position: absolute;
+      top: 25px;
+      right: -31px;
+      bottom: -3px;
+      width: 28px;
+      border-top: @yellow-bg 3px solid;
+      border-right: @yellow-bg 3px solid;
+      border-bottom: @yellow-bg 3px solid;
+    }
+    
+    h1 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    h2 {
+      font-size: 1.3em;
+      margin: 20px 0 10px 0;
+    }
+    p {
+      margin-bottom: 5px;
+      white-space: pre-wrap;
+      &.no-pre {
+        white-space: normal;
+      }
+    }
+    b {
+      color: @info-bold-color;
+    }
+  }
+  #no-connection { display: none; };
+// info popup }}}
+
+// head section {{{
+  header, #tabs { padding: 0 10px; }
+  header, #tabs, #tabs a { font: 14px/28px @font; height: 28px; }
+  header { 
+    color: @alt-text-color;
+    background: @green-bg; 
+    font-size: 14px; 
+    line-height: 28px; 
+    height: 28px;
+  }
+  header.failed { background: @red-bg; }
+  header.pending { background: @yellow-bg; }
+  
+  #focus-status {
+    color: @alt-text-color;
+    float: right;
+  }
+  
+  #tabs { // Summary | Failures
+    color: @dimmed-text-color; 
+    background-color: @text-bg;
+    overflow: hidden;
+    transition: height 400ms;
+    &.hidden {
+      height: 0;
+      // display: none;
+    }
+  }
+    
+  .tab.summary { margin-right: 5px; color: @text-color; }
+  .tab.failures { margin-left: 5px; color: @dimmed-text-color; }
+  .tab.summary:hover { text-decoration: none; }
+
+  .show-failures .tab.summary { color: @dimmed-text-color; }
+  .show-failures .tab.summary:hover { text-decoration: underline; }
+  .show-failures .tab.failures { color: @text-color; }
+  .show-failures .tab.failures:hover { text-decoration: none; }
+// head section }}}
+
+// main content {{{
+
+  #summary, #failures { margin-top: 14px; margin-bottom: 40px; }
+  #failures { display: none; }
+  .show-failures.has-failures #summary { display: none; }
+  .show-failures.has-failures #failures { display: block; }
+  
+  // Summary tab {{{
+    section { // all top-level suites are sections 
+      /*cursor: -webkit-zoom-out; cursor: -moz-zoom-out; cursor: zoom-out; */
+      background: @text-bg; 
+      padding: 10px; 
+      border-bottom: @text-delimiter-color 1px solid; 
+      position: relative;
+      transition: height 400ms;
+      overflow: hidden;
+    }
+    section.folded { 
+      /*cursor: -webkit-zoom-in; cursor: -moz-zoom-in; cursor: zoom-in; */
+      padding-bottom: 8px;
+    }
+    // section.selected {
+    //   // background: #fafafa;
+    //   border-bottom: #e0e0e0 1px solid;
+    //   box-shadow: 0 -1px 0 #e0e0e0;
+    // }
+    section.folded .indented { display: none; }
+    
+    .section-arrow {
+      width: 0; 
+      height: 0; 
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      
+      border-left: 5px solid @blue;
+      
+      position: absolute;
+      top: @position-indicator-top;
+      left: 0;
+      
+      display: none;
+    }
+    section.selected .section-arrow {
+      display: block;
+    }
+    .no-focus .section-arrow {
+      display: none !important;
+    }
+    // .no-focus .section-toggle {
+    //   cursor: default !important;
+    //   text-decoration: none !important;
+    // }
+    
+    section > .description { // line describing a top-level suite
+      font: 1.2em/1.5em @font; 
+    }
+    .indented {
+      padding-left: @indent;
+      border-left: @indent-guide-color 1px dotted;
+      margin-bottom: 8px;
+    }
+    section > .indented {
+      border-left: none; 
+    }
+    .br { margin-top: 8px; }
+
+    // section totals (top level suites) {{{
+      .section-totals { 
+        display: none; 
+        color: @alt-text-color; 
+        font-size: 11px;
+        overflow: hidden; 
+        position: relative;
+        top: -1px; 
+        margin-left: 10px;
+      }
+      section.folded .section-totals { display: inline; }
+      .section-total { 
+        vertical-align: baseline; 
+        padding: 1px 8px; 
+      }
+      .section-total.passed { background: @green-bg; }
+      .section-total.failed { background: @red-bg; }
+      .section-total.skipped { background: @yellow-bg; }
+    // section totals }}}
+    
+    .spec.passed { color: @green; }
+    .spec.failed a { color: @red;  }
+    .spec.skipped { color: @yellow; }
+    
+    // failure log {{{
+      .spec-log {
+        color: @spec-log-text-color;
+        background: @spec-log-bg;
+        padding: 10px 10px 10px @indent;
+        margin: 5px -10px 5px 0;
+        white-space: pre-wrap;
+        display: none;
+        position: relative;
+        &:after {
+          content: '';
+          display: block;
+          position: absolute;
+          width: 1000px;
+          left: -1000px;
+          top: 0;
+          bottom: 0;
+          background: @spec-log-bg;
+        }
+      }
+      .spec.selected {
+        > .spec-log { display: block; }
+        .summary-failure-toggle { cursor: default; text-decoration: none; }
+      }
+      .no-focus .summary-failure-toggle {
+        cursor: pointer !important;
+        &:hover {
+          text-decoration: underline !important;
+        }
+      }
+    // failure log }}}
+  // Summary tab }}}
+   
+  // Failures tab {{{
+    .failed-spec {
+      background: @text-bg;
+      border-bottom: @text-delimiter-color 1px solid;
+      margin-bottom: 20px;
+    }
+    .failed-spec .name {
+      color: @red;
+      font: 1.1em/1.3em @font;
+      padding: 10px 10px 5px 10px;
+    }
+    .failure-log {
+      padding: 10px 10px 10px 24px;
+      white-space: pre-wrap;
+    }
+  // Failures tabs }}}
+// main content }}}

@@ -1,0 +1,59 @@
+doctype html
+html
+  head
+    link(rel="shortcut icon" href="/favicon.ico")
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+    title= pageTitle
+    link(rel="stylesheet", type="text/css", href="/"+ colorScheme +".css")
+  
+  body(class= defaultTab === 'failures' && 'show-failures')
+    #browsers
+      #info-toggle
+    .clear
+    header.transition-bg
+      a#focus-status
+      #result-info
+    #tabs
+      a.tab.summary Summary
+      | |
+      a.tab.failures Failures
+    #summary
+    #failures
+      
+    #info
+      #info-content
+        .filler
+          
+        #help
+          h1 Keyboard Controls
+          p <b>1-9</b>    - select a browser
+          p <b>F</b>      - toggle between Summary and Failures 
+          p <b>[</b>      - turn focus mode on
+          p <b>]</b>      - turn focus mode off
+          p <b>/</b> or <b>?</b> - toggle this panel
+          
+          h2 Focus Mode 
+          p.no-pre.
+            Top-level suites are represented as foldable sections. Focus Mode
+            insures that only one section and one error log can be unfolded  at
+            a time, and allows to navigate the list either using Vi's
+            <b>HJKL</b>  way or <b>WASD</b> keys:
+            
+          p <b>H</b> or <b>A</b> (left)  - fold current suite
+          p <b>L</b> or <b>D</b> (right) - unfold current suite
+          p <b>J</b> or <b>S</b> (down)  - go to next error log or suite
+          p <b>K</b> or <b>W</b> (up)    - go to previous error log or suite
+          
+        #no-connection
+          h1 No Connection
+          p.
+            Lost connection to the server - make sure that Karma is running.
+            This page will attempt to reconnect automatically.
+    
+    script(src="/jquery.min.js")
+    script(src="/lodash.min.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/mousetrap.min.js")
+    script(src="/main.js")
+    script(src="/fold.js")
+    script(src="/browser-view.js")

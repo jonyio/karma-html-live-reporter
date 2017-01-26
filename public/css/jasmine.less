@@ -1,0 +1,37 @@
+@font: "Source Code Pro", Monaco, "Lucida Console", monospace;
+@font-size: 12px;
+@position-indicator-top: 16px; // adjust if you change font-size
+@blue: #1485CC; // position indicator
+
+@green: #5e7d00;
+@green-bg: @green;
+@red: #b03911;
+@red-bg: @red;
+@yellow: #ba9d37;
+@yellow-bg: @yellow;
+
+
+@page-bg: #eee; // global background
+@text-bg: #fff; // background for all the main text
+@text-delimiter-color: #eaeaea; // section delimiters drawn on @text-bg 
+
+
+@text-color: #333; // uncolored text 
+@dimmed-text-color: #999; // dimmed text on @text-bg 
+@alt-text-color: #fff; // text on top of a colored background 
+
+@indent: 1.2em;
+@indent-guide-color: darken(@text-color, 60%);
+// @indent-guide-color: rgba(0,0,0,0);
+
+@browser-tab-bg: #ddd; // background for inactive browser tab 
+
+@spec-log-text-color: @alt-text-color; // failure logs in the Summary tab 
+@spec-log-bg: #555;
+// @spec-log-bg: lighten(@text-bg, 5%);
+
+@info-text-color: @alt-text-color;
+@info-bg: @spec-log-bg;
+@info-bold-color: @yellow;
+
+@import "_css.less";

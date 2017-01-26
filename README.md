@@ -1,44 +1,35 @@
 # karma-html-reporter
 
-> Reporter that formats results in HTML similar to jasmine.
+Reporter that displays your test results in a live-updated html page.
+
+![gif demo][demo]
+
+[demo]: https://github.com/jonyio/karma-html-live-reporter/raw/master/demo.gif
+
 
 ## Installation
 
-The easiest way is to keep `karma-html-reporter` as a devDependency in your `package.json`.
-```json
-{
-  "devDependencies": {
-    "karma": "~0.12",
-    "karma-html-reporter": "~0.1"
-  }
-}
+```bash
+npm install karma-html-live-reporter --save-dev
 ```
 
-You can simply do it by:
-```bash
-npm install karma-html-reporter --save-dev
-```
+Add `live-html` to your list of reporters in karma.conf.js
 
 ## Configuration
+
 ```js
 // karma.conf.js
 module.exports = function(config) {
   config.set({
-    reporters: ['progress', 'html'],
+    reporters: ['progress', 'live-html'],
 
     // the default configuration
-    htmlReporter: {
-      outputDir: 'karma_html', // where to put the reports 
-      templatePath: null, // set if you moved jasmine_template.html
-      focusOnFailures: true, // reports show failures on start
-      namedFiles: false, // name files instead of creating sub-directories
-      pageTitle: null, // page title for reports; browser info by default
-      urlFriendlyName: false // simply replaces spaces with _ for files/dirs
+    htmlLiveReporter: {
+      colorScheme: 'jasmine', // light 'jasmine' or dark 'earthborn' scheme
+      defaultTab: 'summary', // 'summary' or 'failures': a tab to start with
       
-      
-      // experimental
-      preserveDescribeNesting: false, // folded suites stay folded 
-      foldAll: false, // reports start folded (only with preserveDescribeNesting)
+      // only show one suite and fail log at a time, with keyboard navigation
+      focusMode: true, 
     },
   });
 };
@@ -51,8 +42,13 @@ karma start --reporters html,dots
 
 ## Keyboard Controls
 
-`1` and `2` - switch between Spec List and Failures.
-`F` - fold/unfold all suites in `preserveDescribeNesting` mode.
+* `1` and `2` - switch between Spec List and Failures.
+* `F` - fold/unfold all suites in `preserveDescribeNesting` mode.
+* `[` - toggle focus mode on.
+* `]` - toggle focus mode off.
+* `/` or `?` - show/hide help.
+
+* `WASD` or `HJKL` - navigation in focus mode
 
 ----
 

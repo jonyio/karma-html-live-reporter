@@ -1,0 +1,38 @@
+mixin suite(suite)
+  if !suite.isRoot
+    .description= suite.name
+    
+  .indented
+    each spec in suite
+      if spec.isSuite
+        +suite(spec)
+      else
+        div(class= 'spec '+ spec.result, id= spec.id)
+          .line
+            if spec.result === 'failed'
+              a.summary-failure-toggle= spec.name
+            else
+              = spec.name
+          if spec.result === 'failed'
+            .spec-log= spec.log
+            
+//- mini spec(spec)
+//-   div(class= 'spec '+ spec.result, id= spec.id)
+//-     .line
+//-       if spec.failed
+//-         a.summary-failure-toggle= spec.name
+//-       else
+//-         = spec.name
+//-     if spec.failed
+//-       .spec-log= spec.log
+   
+each suite in suites
+  section(id= suite.id, class= suite.state)
+    .section-arrow
+    .description
+      a.section-toggle= suite.name
+      .section-totals
+        each total, result in suite.total
+          if total
+            span(class = 'section-total '+ result)= total
+    +suite(suite)

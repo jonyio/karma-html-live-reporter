@@ -3,3 +3,5 @@ node_modules
 .iml
 *.swp
 *.~
+*.css
+*.DS_Store
