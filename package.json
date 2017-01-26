@@ -1,12 +1,8 @@
 {
   "name": "karma-html-live-reporter",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Karma plugin. Reports results in live html pages.",
   "main": "index.js",
-  "files": [
-    "template.html",
-    "index.js"
-  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/jonyio/karma-html-live-reporter"
