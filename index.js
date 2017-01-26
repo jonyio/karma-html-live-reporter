@@ -33,10 +33,10 @@ var reporter = function (decorator, karmaConfig, emitter, logger) {
 
   app.get('/', function (req, res) { res.send(indexHTML); });
   app.get('/lodash.min.js', function (req, res) {
-    res.sendfile(__dirname + '/node_modules/lodash/dist/lodash.min.js');
+    res.sendfile(require.resolve('lodash/dist/lodash.min.js'));
   });
   app.get('/jquery.min.js', function (req, res) {
-    res.sendfile(__dirname + '/node_modules/jquery/dist/jquery.min.js');
+    res.sendfile(require.resolve('jquery/dist/jquery.min.js'));
   });
   app.use(lessMiddleware(__dirname + '/public/css'));
   app.use(express.static(__dirname + '/public/css'));
