@@ -25,7 +25,6 @@ var reporter = function (decorator, karmaConfig, emitter, logger) {
   var indexHTML = jade.renderFile(__dirname +'/tpl/index.jade', config);
 
   logger = logger.create('reporter.html'); // karma's console.log 
-  logger.info('color scheme:' + karmaConfig.htmlLiveReporter.colorScheme);
 
   decorator(this);
   var allMessages = []; // no idea what's this doing here really
