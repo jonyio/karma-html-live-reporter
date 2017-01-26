@@ -1,4 +1,4 @@
-# karma-html-reporter
+# Karma Live HTML Reporter
 
 Reporter that displays your test results in a live-updated html page.
 
