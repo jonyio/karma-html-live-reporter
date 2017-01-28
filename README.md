@@ -27,9 +27,9 @@ module.exports = function(config) {
     htmlLiveReporter: {
       colorScheme: 'jasmine', // light 'jasmine' or dark 'earthborn' scheme
       defaultTab: 'summary', // 'summary' or 'failures': a tab to start with
-      
+
       // only show one suite and fail log at a time, with keyboard navigation
-      focusMode: true, 
+      focusMode: true,
     },
   });
 };
@@ -42,10 +42,10 @@ karma start --reporters html,dots
 
 ## Keyboard Controls
 
-* `1` and `2` - switch between Spec List and Failures.
-* `F` - fold/unfold all suites in `preserveDescribeNesting` mode.
-* `[` - toggle focus mode on.
-* `]` - toggle focus mode off.
+* `1-9` - select a browser.
+* `F` - toggle between Summary and Failures.
+* `[` - turn focus mode on.
+* `]` - turn focus mode off.
 * `/` or `?` - show/hide help.
 
 * `WASD` or `HJKL` - navigation in focus mode
