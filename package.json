@@ -1,6 +1,6 @@
 {
   "name": "karma-html-live-reporter",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A Karma plugin. Reports results in a live-updated html page.",
   "main": "index.js",
   "repository": {
@@ -18,15 +18,15 @@
     "live",
     "jasmine"
   ],
-  "author": "Jony Ivanov <johnny3k@gmail.com>",
+  "author": "Jon Ivanov <johnny3k@gmail.com>",
   "dependencies": {
-    "lodash": "~2.4.1",
-    "socket.io": "~1.0.6",
     "express": "~4.7.2",
-    "jade": "~1.5.0",
     "jquery": "~2.1.1",
-    "less-middleware": "~1.0.3",
     "less": "~1.7.4",
+    "less-middleware": "~1.0.3",
+    "lodash": "~2.4.1",
+    "pug": "^2.0.0-rc.1",
+    "socket.io": "~1.0.6",
     "string-hash": "~1.1.0"
   },
   "peerDependencies": {
@@ -34,6 +34,6 @@
   },
   "license": "MIT",
   "contributors": [
-    "Jony Ivanov <johnny3k@gmail.com>"
+    "Jon Ivanov <johnny3k@gmail.com>"
   ]
 }

@@ -5,7 +5,7 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var jade = require('jade');
+var jade = require('pug');
 var lessMiddleware = require('less-middleware');
 
 var Browser = require('./lib/browser.js');
