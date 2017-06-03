@@ -1,6 +1,6 @@
 {
   "name": "karma-html-live-reporter",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "A Karma plugin. Reports results in a live-updated html page.",
   "main": "index.js",
   "repository": {
@@ -22,8 +22,8 @@
   "dependencies": {
     "express": "~4.7.2",
     "jquery": "~2.1.1",
-    "less": "~1.7.4",
-    "less-middleware": "~1.0.3",
+    "less": "~2.7.2",
+    "less-middleware": "~2.2.0",
     "lodash": "~2.4.1",
     "pug": "^2.0.0-rc.1",
     "socket.io": "~1.0.6",
