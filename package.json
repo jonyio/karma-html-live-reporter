@@ -21,7 +21,7 @@
   "author": "Jon Ivanov <johnny3k@gmail.com>",
   "dependencies": {
     "express": "~4.7.2",
-    "jquery": "~2.1.1",
+    "jquery": "~3.5.0",
     "less": "~2.7.2",
     "less-middleware": "~2.2.0",
     "lodash": "~2.4.1",
